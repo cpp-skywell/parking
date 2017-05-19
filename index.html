@@ -31,7 +31,7 @@
 		</form>
 		<div class="ui-grid-a">
 			<div class="ui-block-a"><a href="#pagetwo" class="ui-btn">Sign In</a></div>
-			<div class="ui-block-b"><a href="#pagetwo" class="ui-btn">Sign Up</a></div>
+			<div class="ui-block-b"><a href="#pageregister" class="ui-btn">Sign Up</a></div>
 		</div>
 	</div>
 
@@ -48,7 +48,33 @@
     <a href="#pagetwo" class="ui-btn">Show Directions</a>
 	<a href="#pagetwo" class="ui-btn">Leave the Spot</a>
     <a href="#pagetwo" class="ui-btn">Exchange the Spot</a>
-	<a href="#pagetwo" class="ui-btn">Sign Out</a>
+	<a href="#pageone" class="ui-btn">Sign Out</a>
+	<!--<div data-role="popup" id="sighoutpopup"><p>You have successfully logged out!</p></div>-->
+  </div>
+
+</div> 
+
+<div data-role="page" id="pageregister">
+  <div data-role="header">
+    <h1>CPP Parking</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+	<form>
+     <label for="name">Name</label>
+     <input type="text" name="name" id="name" value="">
+     <label for="surname">Surname</label>
+     <input type="text" name="surname" id="surname" value="">
+	 <label for="email">Email</label>
+     <input type="text" name="email" id="email" value="">
+	 <label for="password">Password</label>
+     <input type="password" name="password" id="password" value="">
+	 <label for="passwordrep">Repeat Password</label>
+     <input type="password" name="passwordrep" id="passwordrep" value="">
+	 <div class="ui-block-b"><a href="#pageone" class="ui-btn">Cancel</a></div>
+	 <div class="ui-block-b"><a href="#sighoutpopup" data-rel="popup" data-transition="pop" data-position-to="window" class="ui-btn">Sign Up</a></div>
+	 <div data-role="popup" id="sighoutpopup"><p>You have successfully signed up!</p></div>
+	</form>
   </div>
 
 </div> 
