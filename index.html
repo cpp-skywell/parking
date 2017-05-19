@@ -30,8 +30,11 @@
 			</div>
 		</form>
 		<div class="ui-grid-a">
-			<div class="ui-block-a"><a href="#pagetwo" class="ui-btn">Sign In</a></div>
+			<div class="ui-block-a"><a href="#pagetwo" class="ui-btn" id="signInButton">Sign In</a></div>
 			<div class="ui-block-b"><a href="#pageregister" class="ui-btn">Sign Up</a></div>
+		</div>
+		<div class="ui-grid-a">
+			<label>For test purposes, in order to log-in, use admin/admin credentials</label>
 		</div>
 	</div>
 
@@ -48,8 +51,7 @@
     <a href="#pagetwo" class="ui-btn">Show Directions</a>
 	<a href="#pagetwo" class="ui-btn">Leave the Spot</a>
     <a href="#pagetwo" class="ui-btn">Exchange the Spot</a>
-	<a href="#pageone" class="ui-btn">Sign Out</a>
-	<!--<div data-role="popup" id="sighoutpopup"><p>You have successfully logged out!</p></div>-->
+	<a href="#pageone" class="ui-btn" id="signOutButton">Sign Out</a>
   </div>
 
 </div> 
@@ -61,19 +63,18 @@
 
   <div data-role="main" class="ui-content">
 	<form>
-     <label for="name">Name</label>
-     <input type="text" name="name" id="name" value="">
-     <label for="surname">Surname</label>
-     <input type="text" name="surname" id="surname" value="">
-	 <label for="email">Email</label>
-     <input type="text" name="email" id="email" value="">
-	 <label for="password">Password</label>
-     <input type="password" name="password" id="password" value="">
-	 <label for="passwordrep">Repeat Password</label>
-     <input type="password" name="passwordrep" id="passwordrep" value="">
+     <label for="name">Name*</label>
+     <input type="text" name="name" id="signUpName" value="">
+     <label for="surname">Surname*</label>
+     <input type="text" name="surname" id="signUpSurname" value="">
+	 <label for="email">Email*</label>
+     <input type="text" name="email" id="signUpEmail" value="">
+	 <label for="password">Password*</label>
+     <input type="password" name="password" id="signUpPassword" value="">
+	 <label for="passwordrep">Repeat Password*</label>
+     <input type="password" name="passwordrep" id="signUpPasswordRep" value="">
 	 <div class="ui-block-b"><a href="#pageone" class="ui-btn">Cancel</a></div>
-	 <div class="ui-block-b"><a href="#sighoutpopup" data-rel="popup" data-transition="pop" data-position-to="window" class="ui-btn">Sign Up</a></div>
-	 <div data-role="popup" id="sighoutpopup"><p>You have successfully signed up!</p></div>
+	 <div class="ui-block-b"><a href="#sighoutpopup" id="signUp" class="ui-btn">Sign Up</a></div>
 	</form>
   </div>
 
@@ -94,6 +95,33 @@
   </div>
 
 </div> 
+
+<script>
+$('#signInButton').click(function(e) {
+	var username = $('#username').val();
+	var password = $('#pwd').val();
+	if(username != 'admin' || password != 'admin'){
+		alert('Wrong credentials!');
+		e.stopImmediatePropagation();
+		e.preventDefault();
+	}
+  });
+  
+$('#signUp').click(function(e) {
+	var signUpName = $('#signUpName').val();
+	var signUpSurname = $('#signUpSurname').val();
+	var signUpEmail = $('#signUpEmail').val();
+	var signUpPasswordRep = $('#signUpPasswordRep').val();
+	if(signUpName == "" || signUpSurname == "" || signUpEmail == "" || signUpPasswordRep == ""){
+		alert('Fill the required fields!');
+	}
+	else{alert('You are now registered!');}
+  });
+  
+$('#signOutButton').click(function(e) {
+    alert('You have successfully logged out!');
+  });
+</script>
 
 <script>
   $(document).on('pageinit', '#pagethree', function () {
