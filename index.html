@@ -1,163 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- Include meta tag to ensure proper rendering and touch zooming -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Include jQuery Mobile stylesheets -->
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <!-- Include the jQuery library -->
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <!-- Include the jQuery Mobile library -->
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <!-- Include the Google Maps library -->
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-</head>
-<body>
+    <head>
+        <title>CPP Parking</title>
+        <!-- Include meta tag to ensure proper rendering and touch zooming -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Include jQuery Mobile stylesheets -->
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <!-- Include the jQuery library -->
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!-- Include the jQuery Mobile library -->
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <!-- Include the Google Maps library -->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <link rel="stylesheet" href="themes/custom.min.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    </head>
+    <body>
 
-<div data-role="page" id="pageone">
-	<div data-role="header">
-		<h1>Sign In/Sign Up</h1>
-	</div>
-  
+        <div data-role="page" id="pageone" data-theme="c">
+            <div data-role="header">
+                <h1>Sign In/Sign Up</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div style="text-align:center;">
+                    <img src="logo.gif" style="margin-left:auto;margin-right: auto;max-height:200px;max-width:100%;">
+                </div>
+                <form method="post" action="/action_page_post.php">
+                    <div class="ui-field-contain">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username">       
+                        <label for="pwd">Password</label>
+                        <input type="password" name="pwd" id="pwd">
+                    </div>
+                </form>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><a href="#pagetwo" class="ui-btn" id="signInButton">Sign In</a></div>
+                    <div class="ui-block-b"><a href="#pageregister" class="ui-btn">Sign Up</a></div>
+                </div>
+                <div class="ui-grid-a">
+                    <label>For test purposes, in order to log-in, use admin/admin credentials</label>
+                </div>
+            </div>
 
-	<div data-role="main" class="ui-content">
-		<form method="post" action="/action_page_post.php">
-			<div class="ui-field-contain">
-				<label for="username">Username</label>
-				<input type="text" name="username" id="username">       
-				<label for="pwd">Password</label>
-				<input type="password" name="pwd" id="pwd">
-			</div>
-		</form>
-		<div class="ui-grid-a">
-			<div class="ui-block-a"><a href="#pagetwo" class="ui-btn" id="signInButton">Sign In</a></div>
-			<div class="ui-block-b"><a href="#pageregister" class="ui-btn">Sign Up</a></div>
-		</div>
-		<div class="ui-grid-a">
-			<label>For test purposes, in order to log-in, use admin/admin credentials</label>
-		</div>
-	</div>
+        </div> 
 
-</div> 
+        <div data-role="page" id="pagetwo" data-theme="c">
+            <div data-role="header">
+                <h1>CPP Parking</h1>
+            </div>
 
-<div data-role="page" id="pagetwo">
-  <div data-role="header">
-    <h1>CPP Parking</h1>
-  </div>
+            <div data-role="main" class="ui-content">
+                <a href="#pagethree" class="ui-btn">View Map</a>
+                <a href="#pagetwo" class="ui-btn">Check Available Spots</a>
+                <a href="#pagetwo" class="ui-btn">Show Directions</a>
+                <a href="#pagetwo" class="ui-btn">Leave the Spot</a>
+                <a href="#pagetwo" class="ui-btn">Exchange the Spot</a>
+                <a href="#pageone" class="ui-btn" id="signOutButton">Sign Out</a>
+            </div>
 
-  <div data-role="main" class="ui-content">
-    <a href="#pagethree" class="ui-btn">View Map</a>
-	<a href="#pagetwo" class="ui-btn">Check Available Spots</a>
-    <a href="#pagetwo" class="ui-btn">Show Directions</a>
-	<a href="#pagetwo" class="ui-btn">Leave the Spot</a>
-    <a href="#pagetwo" class="ui-btn">Exchange the Spot</a>
-	<a href="#pageone" class="ui-btn" id="signOutButton">Sign Out</a>
-  </div>
+        </div> 
 
-</div> 
+        <div data-role="page" id="pageregister" data-theme="c">
+            <div data-role="header">
+                <h1>CPP Parking</h1>
+            </div>
 
-<div data-role="page" id="pageregister">
-  <div data-role="header">
-    <h1>CPP Parking</h1>
-  </div>
+            <div data-role="popup" id="myPopup">
+                <p>Successfully logged out!</p>
+            </div>
+            
+            <div data-role="main" class="ui-content">
+                <form>
+                    <label for="name">Name*</label>
+                    <input type="text" name="name" id="signUpName" value="">
+                    <label for="surname">Surname*</label>
+                    <input type="text" name="surname" id="signUpSurname" value="">
+                    <label for="email">Email*</label>
+                    <input type="text" name="email" id="signUpEmail" value="">
+                    <label for="password">Password*</label>
+                    <input type="password" name="password" id="signUpPassword" value="">
+                    <label for="passwordrep">Repeat Password*</label>
+                    <input type="password" name="passwordrep" id="signUpPasswordRep" value="">
+                    <div class="ui-block-b"><a href="#pageone" class="ui-btn">Cancel</a></div>
+                    <div class="ui-block-b"><a href="#sighoutpopup" id="signUp" class="ui-btn">Sign Up</a></div>
+                </form>
+            </div>
 
-  <div data-role="main" class="ui-content">
-	<form>
-     <label for="name">Name*</label>
-     <input type="text" name="name" id="signUpName" value="">
-     <label for="surname">Surname*</label>
-     <input type="text" name="surname" id="signUpSurname" value="">
-	 <label for="email">Email*</label>
-     <input type="text" name="email" id="signUpEmail" value="">
-	 <label for="password">Password*</label>
-     <input type="password" name="password" id="signUpPassword" value="">
-	 <label for="passwordrep">Repeat Password*</label>
-     <input type="password" name="passwordrep" id="signUpPasswordRep" value="">
-	 <div class="ui-block-b"><a href="#pageone" class="ui-btn">Cancel</a></div>
-	 <div class="ui-block-b"><a href="#sighoutpopup" id="signUp" class="ui-btn">Sign Up</a></div>
-	</form>
-  </div>
+        </div> 
 
-</div> 
+        <div data-role="page" id="pagethree" data-theme="c">
 
-<div data-role="page" id="pagethree">
+            <div data-role="header">
+                <h1>Map</h1>
+            </div>
 
-  <div data-role="header">
-    <h1>Map</h1>
-  </div>
-  
-  <div data-role="content" id="content">
-	<div id="map_canvas" style="height:400px"></div>
-  </div>
+            <div data-role="content" id="content">
+                <div id="map_canvas" style="height:400px"></div>
+            </div>
 
-  <div data-role="main" class="ui-content">
-	<a href="#pagetwo" class="ui-btn">Book the Spot</a>
-  </div>
+            <div data-role="main" class="ui-content">
+                <a href="#pagetwo" class="ui-btn">Book the Spot</a>
+            </div>
 
-</div> 
+        </div> 
 
-<script>
-$('#signInButton').click(function(e) {
-	var username = $('#username').val();
-	var password = $('#pwd').val();
-	if(username != 'admin' || password != 'admin'){
-		alert('Wrong credentials!');
-		e.stopImmediatePropagation();
-		e.preventDefault();
-	}
-  });
-  
-$('#signUp').click(function(e) {
-	var signUpName = $('#signUpName').val();
-	var signUpSurname = $('#signUpSurname').val();
-	var signUpEmail = $('#signUpEmail').val();
-	var signUpPasswordRep = $('#signUpPasswordRep').val();
-	if(signUpName == "" || signUpSurname == "" || signUpEmail == "" || signUpPasswordRep == ""){
-		alert('Fill the required fields!');
-	}
-	else{alert('You are now registered!');}
-  });
-  
-$('#signOutButton').click(function(e) {
-    alert('You have successfully logged out!');
-  });
-</script>
+        <script>
+            $('#signInButton').click(function (e) {
+                var username = $('#username').val();
+                var password = $('#pwd').val();
+                if (username != 'admin' || password != 'admin') {
+                    alert('Wrong credentials!');
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                }
+            });
 
-<script>
-  $(document).on('pageinit', '#pagethree', function () {
-    var defaultLatLng = new google.maps.LatLng(34.050770, -117.819453); //CPP Parking coordinates
-    if ( navigator.geolocation ) {
-        function success(pos) {
-            // Location found, show map with these coordinates
-            drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-        }
-        function fail(error) {
-            drawMap(defaultLatLng);  // Failed to find location, show default map
-        }
-		navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
-	}
-	else {
-        drawMap(defaultLatLng);  // No geolocation support, show default map
-    }
+            $('#signUp').click(function (e) {
+                var signUpName = $('#signUpName').val();
+                var signUpSurname = $('#signUpSurname').val();
+                var signUpEmail = $('#signUpEmail').val();
+                var signUpPasswordRep = $('#signUpPasswordRep').val();
+                if (signUpName == "" || signUpSurname == "" || signUpEmail == "" || signUpPasswordRep == "") {
+                    alert('Fill the required fields!');
+                } else {
+                    alert('You are now registered!');
+                }
+            });
 
-    function drawMap(latlng) {
-        var myOptions = {
-            zoom: 10,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+            $('#signOutButton').click(function (e) {
+                alert('You have successfully logged out!');
+            });
+        </script>
 
-        var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-		
-		// Add an overlay to the map of current lat/lng
-        var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title: "Greetings!"
-        });
-	}
-});
-</script>
+        <script>
+            $(document).on('pageinit', '#pagethree', function () {
+                var defaultLatLng = new google.maps.LatLng(34.050770, -117.819453); //CPP Parking coordinates
+                if (navigator.geolocation) {
+                    function success(pos) {
+                        // Location found, show map with these coordinates
+                        drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+                    }
+                    function fail(error) {
+                        drawMap(defaultLatLng);  // Failed to find location, show default map
+                    }
+                    navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy: true, timeout: 6000});
+                } else {
+                    drawMap(defaultLatLng);  // No geolocation support, show default map
+                }
 
-</body>
+                function drawMap(latlng) {
+                            var myOptions = {
+                                    zoom: 10,
+                                    center: latlng,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                            };
+
+                    var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+                    // Add an overlay to the map of current lat/lng
+                            var marker = new google.maps.Marker({
+                                    position: latlng,
+                                    map: map,
+                                    title: "Greetings!"
+                            });
+                }
+            });
+        </script>
+
+    </body>
 </html>
