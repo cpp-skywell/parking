@@ -51,10 +51,14 @@
 
             <div data-role="main" class="ui-content">
                 <a href="#pagethree" class="ui-btn">View Map</a>
-                <a href="#pagetwo" class="ui-btn">Check Available Spots</a>
-                <a href="#pagetwo" class="ui-btn">Show Directions</a>
-                <a href="#pagetwo" class="ui-btn">Leave the Spot</a>
-                <a href="#pagetwo" class="ui-btn">Exchange the Spot</a>
+                <a href="#checkSpotsPopUp" class="ui-btn" data-transition="pop" data-rel="popup">Check Available Spots</a>
+				<div data-role="popup" id="checkSpotsPopUp"><p>By clicking this button user will be provided with a list of available spots.</p></div>
+                <a href="#showDirPopUp" class="ui-btn" data-transition="pop" data-rel="popup">Show Directions</a>
+				<div data-role="popup" id="showDirPopUp"><p>By clicking this button user will be provided with directions from his current place to the current parking spot.</p></div>
+                <a href="#leaveTheSpotPopUp" class="ui-btn" data-transition="pop" data-rel="popup">Leave the Spot</a>
+				<div data-role="popup" id="leaveTheSpotPopUp"><p>By clicking this button the user will no longer stay on the current spot.</p></div>
+                <a href="#exchangeSpotPopUp" class="ui-btn" data-transition="pop" data-rel="popup">Exchange the Spot</a>
+				<div data-role="popup" id="exchangeSpotPopUp"><p>The user will be provided with a list of available spots and their locations with the possibility to exchange his current spot for the new one.</p></div>
                 <a href="#pageone" class="ui-btn" id="signOutButton">Sign Out</a>
             </div>
 
